@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="O2MLeads.Views.Login">
+  <ScrollView>
+    <StackLayout Margin="10,8,10,0" Spacing="15">
+      <Entry x:Name="TxtEmail" HorizontalOptions="FillAndExpand" Placeholder="E-mail"></Entry>
+      <Entry x:Name="TxtSenha" HorizontalOptions="FillAndExpand" Placeholder="Senha" IsPassword="True"></Entry>
+      <Button x:Name="BtnEntrar" Text="Acessar"></Button>
+      <StackLayout>
+        <Label FontSize="Small" Text="Sem cadastro?"></Label>
+      <Button x:Name="BtnCadastrar" Text="Cadastrar"></Button>  
+      </StackLayout>
+      
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -18,15 +19,15 @@ namespace Model.Entities
         [Required]
         public string Nome { get; set; }
 
-        [Index("CNPJ_CPF", IsUnique = true)]
+        [DisplayName("CPF")]
         public string Documento { get; set; }
 
         public string Agencia { get; set; }
         public string Banco { get; set; }
+        public string Conta { get; set; }
 
         [Required]
         [EmailAddress]
-        [Index("Email_Unique",IsUnique = true)]
         public string Email { get; set; }
 
         public bool IsAdmin { get; set; }

@@ -16,6 +16,7 @@ namespace O2M.Controllers
         {
             return View();
         }
+
         public ActionResult ListarLeads(Indicado.StatusLead? status)
         {
             try
@@ -34,6 +35,51 @@ namespace O2M.Controllers
             }
             catch (Exception e)
             {
+                throw e;
+            }
+        }
+
+        public ActionResult ListarLeadsParceiro(int id, Indicado.StatusLead? status)
+        {
+            try
+            {
+                IEnumerable<Indicado> leads;
+                if (!status.HasValue)
+                {
+                    leads = new UOW().IndicadoRep.Get(i => i.CodParceiro == id);
+                }
+                else
+                {
+                    leads = new UOW().IndicadoRep.Get(i => i.CodParceiro==id && i.Status == status.Value);
+                }
+
+                return View(leads);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public ActionResult ListarParceiros(string busca, int pag =0)
+        {
+            try
+            {
+                List<Parceiro> parceiros;
+                if (String.IsNullOrEmpty(busca))
+                {
+                    parceiros = new UOW().ParceiroRep.Get(page: pag).ToList();
+                }
+                else
+                {
+                    parceiros = new UOW().ParceiroRep.Get(p => p.Nome.ToUpper().Contains(busca.ToUpper()), page: pag).ToList();
+                }
+                return View(parceiros);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
                 throw;
             }
         }

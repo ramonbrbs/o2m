@@ -23,6 +23,7 @@ namespace O2M.Controllers
             {
                 var uow = new UOW();
                 uow.ParceiroRep.Insert(p);
+                uow.Save();
                 return View();
             }
             return View();

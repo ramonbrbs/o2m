@@ -3,13 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="O2MLeads.Views.Login">
   <ScrollView>
-    <StackLayout Margin="10,8,10,0" Spacing="15">
-      <Entry x:Name="TxtEmail" HorizontalOptions="FillAndExpand" Placeholder="E-mail"></Entry>
-      <Entry x:Name="TxtSenha" HorizontalOptions="FillAndExpand" Placeholder="Senha" IsPassword="True"></Entry>
-      <Button x:Name="BtnEntrar" Text="Acessar"></Button>
-      <StackLayout>
+    <StackLayout Margin="40,80,40,0" Spacing="15">
+      <Image Aspect="AspectFit" Source="logo.png"></Image>
+      <Entry x:Name="TxtEmail" HorizontalOptions="FillAndExpand" Placeholder="E-mail" Text="ramonflmr@gmail.com"></Entry>
+      
+      <Entry x:Name="TxtSenha" HorizontalOptions="FillAndExpand" Placeholder="Senha" ></Entry>
+      <StackLayout Margin="40,20,40,0">
+        <Button x:Name="BtnEntrar" Text="Acessar" BackgroundColor="#431FD4" TextColor="White" Clicked="BtnEntrar_OnClicked"></Button>
+      </StackLayout>
+      <StackLayout Margin="40,0,40,0">
         <Label FontSize="Small" Text="Sem cadastro?"></Label>
-      <Button x:Name="BtnCadastrar" Text="Cadastrar"></Button>  
+        <Button x:Name="BtnCadastrar" Text="Cadastrar" BackgroundColor="#431FD4" TextColor="White" Clicked="BtnCadastrar_OnClicked"></Button>
       </StackLayout>
       
     </StackLayout>

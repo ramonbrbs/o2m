@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Model.Entities.Parceiro>
+
+@{
+    ViewBag.Title = "ListarParceiros";
+}
+
+<h2>Parceiros</h2>
+<form method="get" action="">
+    @Html.Hidden("page",0)
+    @Html.TextBox("Busca", "", htmlAttributes: new {@class = "control-label col-md-2", @placeholder="Buscar Parceiro"})
+</form>
+
+<p>
+    
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        
+        <td>
+           
+            @Html.ActionLink("Visualizar", "VisualizarParceiro", new { id=item.CodParceiro })
+            
+        </td>
+    </tr>
+}
+
+</table>

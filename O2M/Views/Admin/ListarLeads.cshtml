@@ -1,0 +1,94 @@
+﻿@using Model.Entities
+@model IEnumerable<Model.Entities.Indicado>
+
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Últimos Leads @if (ViewBag.Status != null)
+           {
+               @Html.Raw(ViewBag.Status + "s")
+           }</h2>
+
+<p>
+    
+</p>
+<table class="table">
+    <tr>
+        <th>Parceiro</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contato)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Operadora)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.QtdLinhasMoveis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QtdLinhasFixas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QtdBandaLarga)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QtdCentraltelefonica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QtdLinkDedicado)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Parceiro.Nome)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operadora)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdLinhasMoveis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdLinhasFixas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdBandaLarga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdCentraltelefonica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdLinkDedicado)
+            </td>
+
+            <td>
+
+                @Html.ActionLink("Visualizar", "Visualizar","Lead", new {id = item.CodIndicado},null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.Partial("Pagination", (Paginacao<Indicado>)ViewBag.Pagination)

@@ -1,0 +1,130 @@
+﻿@model Model.Entities.Indicado
+
+@{
+    ViewBag.Title = "Visualizar";
+}
+
+<h2>@Model.Nome</h2>
+<h5>Status: @Model.Status</h5>
+<div>
+    <h4>Indicado por @Model.Parceiro.Nome em @Model.DataEnvio.Value.ToString("dd/MM/yyyy")</h4>
+    <hr />
+    @if (User.IsInRole("ADMIN"))
+    {
+        <a href="@Url.Action("InserirComissao","Admin", new {id = Model.CodIndicado})"><button class="btn btn-success">Aprovar</button></a> <button class="btn btn-danger">Negar</button>
+        <hr />
+    }
+    
+    <dl class="dl-horizontal">
+        
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Contato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Operadora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Operadora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorLead)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorLead)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtdLinhasMoveis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtdLinhasMoveis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtdLinhasFixas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtdLinhasFixas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtdBandaLarga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtdBandaLarga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtdCentraltelefonica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtdCentraltelefonica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtdLinkDedicado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtdLinkDedicado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodParceiro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodParceiro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (User.IsInRole("ADMIN"))
+    {
+        
+        @Html.ActionLink("Voltar", "ListarLeads","Admin")
+    }
+    else
+    {
+        @Html.ActionLink("Voltar", "Visualizar")
+    }
+    
+</p>

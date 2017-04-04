@@ -18,5 +18,6 @@ namespace DAO.Contexts
         public DbSet<Parceiro> Parceiros { get; set; }
         public DbSet<Indicado> Indicados { get; set; }
         public DbSet<TokenLogin> Tokens { get; set; }
+        public DbSet<Banco> Bancos { get; set; }
     }
 }

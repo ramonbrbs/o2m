@@ -20,6 +20,8 @@ namespace DAO.Repositories
             this.dbSet = context.Set<TEntity>();
         }
 
+        
+
         public virtual IEnumerable<TEntity> Get(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
@@ -51,14 +53,58 @@ namespace DAO.Repositories
             return query.ToList();
         }
 
+
+        public virtual int Count(
+            Expression<Func<TEntity, bool>> filter = null,
+            string includeProperties = "")
+        {
+            try
+            {
+                if (filter != null)
+                {
+                    return context.Set<TEntity>().Where(filter).Count();
+                }
+                return context.Set<TEntity>().Count();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+
+        }
+
         public virtual TEntity GetFirst(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "")
         {
+            try
+            {
+                    
+                var consulta =  context.Set<TEntity>().Where(filter);
+                if(!String.IsNullOrEmpty(includeProperties))
+                foreach (var p in includeProperties.Split(','))
+                {
+                    consulta = consulta.Include(p);
+                }
+                if (orderBy != null)
+                {
+                    return orderBy(consulta).FirstOrDefault();
+                }
+                return consulta.FirstOrDefault();
+                
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
-
-            return orderBy(context.Set<TEntity>().Where(filter)).FirstOrDefault();
+            
         }
 
         public virtual TEntity GetByID(object id)

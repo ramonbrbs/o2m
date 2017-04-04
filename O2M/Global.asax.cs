@@ -32,8 +32,8 @@ namespace O2M
                         string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
                         //string roles = string.Empty;
 
-
-                        var usuario = new UOW().ParceiroRep.GetFirst(p => p.CodParceiro == Convert.ToInt32(username));
+                        var codUsuario = Convert.ToInt32(username);
+                        var usuario = new UOW().ParceiroRep.GetFirst(p => p.CodParceiro == codUsuario);
                         //UsuarioDTO usuario = UsuarioRN.SelecionarUsuario_Codigo(Convert.ToInt32(username));
                         
                         List<string> roles = new List<string>();

@@ -1,0 +1,10 @@
+﻿@model Model.Entities.Paginacao<Model.Entities.Indicado>
+
+<ul class="pagination">
+    @for (int i = 1; i <= Model.QtdPags; i++)
+    {
+        <li><a href="?page=@i" @if (Model.CurrentPage == i - 1)
+                        {
+                            @Html.Raw("class=\"active\"")}>@i</a></li>
+    }
+</ul>

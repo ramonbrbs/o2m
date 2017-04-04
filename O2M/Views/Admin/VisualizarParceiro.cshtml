@@ -1,0 +1,85 @@
+﻿@model Model.Entities.Parceiro
+
+@{
+    ViewBag.Title = "VisualizarParceiro";
+}
+
+<h2>Informações</h2>
+
+<div>
+    <h4>@Model.Nome</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Documento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Documento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Agencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agencia)
+        </dd>
+
+        <dt>
+            Banco:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Banco.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Conta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Conta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        
+
+
+    </dl>
+</div>
+
+<hr />
+<h4>Leads</h4>
+<table class="table">
+    <tr>
+        <th>Nome</th>
+        <th>Contato</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.Indicados)
+    {
+        <tr>
+            <td>@item.Nome</td>
+            <td>@item.Contato</td>
+            <td>@item.Status</td>
+            <td>@Html.ActionLink("Visualizar", "Visualizar", "Lead", new { id = item.CodIndicado }, null)</td>
+        </tr>
+    }
+
+</table>
+<p>
+    
+    @Html.ActionLink("Voltar", "ListarParceiros")
+</p>

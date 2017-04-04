@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Model.WS
 {
-    public class WSResponse
+    public class WSResponse<TEntity> where TEntity : class
     {
-        public object Content { get; set; }
+        public WSResponse()
+        {
+            Errors = new List<string>();
+        }
+        public TEntity Content { get; set; }
         public bool Success { get; set; }
         public List<String> Errors { get; set; }
     }

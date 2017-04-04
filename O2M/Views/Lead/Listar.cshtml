@@ -1,0 +1,60 @@
+﻿@using Model.Entities
+@model IEnumerable<Model.Entities.Indicado>
+
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Minhas Indicações</h2>
+
+<p>
+    @Html.ActionLink("Nova", "Cadastro")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contato)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Operadora)
+        </th>
+        
+        
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operadora)
+            </td>
+        
+            
+
+            <td>
+            
+                @Html.ActionLink("Visualizar", "Visualizar", new { id=item.CodIndicado })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.Partial("Pagination", (Paginacao<Indicado>)ViewBag.Pagination)

@@ -17,7 +17,7 @@
     <AssemblyName>O2M</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -129,17 +129,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeadController.cs" />
     <Compile Include="Controllers\ParceiroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Parceiro\AlterarSenhaVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilWEB\Sessao.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap2.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -174,12 +177,20 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Parceiro\Cadastro.cshtml" />
+    <Content Include="Views\Parceiro\Login.cshtml" />
+    <Content Include="Views\Lead\Cadastro.cshtml" />
+    <Content Include="Views\Lead\Visualizar.cshtml" />
+    <Content Include="Views\Lead\Listar.cshtml" />
+    <Content Include="Views\Lead\Pagination.cshtml" />
+    <Content Include="Views\Admin\ListarLeads.cshtml" />
+    <Content Include="Views\Admin\Pagination.cshtml" />
+    <Content Include="Views\Admin\ListarParceiros.cshtml" />
+    <Content Include="Views\Admin\VisualizarParceiro.cshtml" />
+    <Content Include="Views\Admin\InserirComissao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Lead\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -225,7 +236,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>22830</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:22830/</IISUrl>
+          <IISUrl>http://localhost/O2M</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

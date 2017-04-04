@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Business;
 using DAO.Repositories;
 using Model.Entities;
 using O2M.UtilWEB;
 
 namespace O2M.Controllers
 {
-    public class LeadController : Controller
+    [Authorize]
+    public class LeadController : BaseController
     {
         // GET: Lead
         public ActionResult Index()
@@ -18,22 +20,28 @@ namespace O2M.Controllers
         }
 
 
-        public ActionResult Listar(Indicado.StatusLead? status)
+        public ActionResult Listar(Indicado.StatusLead? status, int page = 1)
         {
             try
             {
                 var id = Sessao.SelecionarIDUsuarioLogado();
                 IEnumerable<Indicado> leads;
+                var pagRN = new PaginacaoRN<Indicado>();
+                Paginacao<Indicado> pag = new Paginacao<Indicado>();
+                
                 if (!status.HasValue)
                 {
-                    leads = new UOW().IndicadoRep.Get(i => i.CodParceiro == id);
+                    pag = pagRN.GetPaginacao(page, i => i.CodParceiro == id,
+                        orderBy: indicados => indicados.OrderBy(i => i.CodIndicado), pageSize: 1);
                 }
                 else
                 {
-                    leads = new UOW().IndicadoRep.Get(i => i.CodParceiro == id && i.Status == status.Value);
+                    pag = pagRN.GetPaginacao(page, i => i.CodParceiro == id && i.Status == status.Value,
+                        orderBy: indicados => indicados.OrderBy(i => i.CodIndicado));
+                    
                 }
-                
-                return View(leads);
+                ViewBag.Pagination = pag;
+                return View(pag.Result);
             }
             catch (Exception e)
             {
@@ -41,15 +49,32 @@ namespace O2M.Controllers
             }
         }
 
+
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         [Authorize]
         public ActionResult Cadastro(Indicado indicado)
         {
+            var operadoras = new List<SelectListItem>();
+            operadoras.Add(new SelectListItem() { Value = "Claro", Text = "Claro" });
+            operadoras.Add(new SelectListItem() { Value = "Oi", Text = "Oi" });
+            operadoras.Add(new SelectListItem() { Value = "Tim", Text = "Tim" });
+            operadoras.Add(new SelectListItem() { Value = "Vivo", Text = "Vivo" });
+            ViewBag.Operadoras = operadoras;
+            if (Request.HttpMethod == "GET")
+            {
+                return View();
+            }
             if (ModelState.IsValid)
             {
                 var uow = new UOW();
                 indicado.Status = Indicado.StatusLead.Pendente;
+                indicado.CodParceiro = Convert.ToInt32(User.Identity.Name);
+                indicado.DataEnvio = DateTime.Now;
                 uow.IndicadoRep.Insert(indicado);
+                
+                
                 uow.Save();
+                return RedirectToAction("Visualizar","Lead", new { id=indicado.CodIndicado});
             }
             return View(indicado);
         }
@@ -58,7 +83,8 @@ namespace O2M.Controllers
         {
             try
             {
-                var indicado = new UOW().IndicadoRep.GetFirst(i => i.CodIndicado == id);
+                var codParceiro = Convert.ToInt32(User.Identity.Name);
+                var indicado = new UOW().IndicadoRep.GetFirst(i => i.CodIndicado == id && i.CodParceiro == codParceiro,includeProperties:"Parceiro");
                 if (indicado == null)
                 {
                     return HttpNotFound();
@@ -92,25 +118,6 @@ namespace O2M.Controllers
             }
         }
 
-        public ActionResult InserirComissao(int id,decimal? comissao)
-        {
-            try
-            {
-                if (Request.HttpMethod == "POST")
-                {
-                    var uow = new UOW();
-                    var indicado = uow.IndicadoRep.GetFirst(i => i.CodIndicado == id);
-                    indicado.ValorLead = comissao.Value;
-                    uow.IndicadoRep.Update(indicado);
-                    uow.Save();
-                }
-                return View();
-            }
-            catch (Exception e)
-            {
-                
-                throw;
-            }
-        }
+        
     }
 }

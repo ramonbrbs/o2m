@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+
+
+
+
+<h2>Login</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-3"></div>
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
+            @using (Html.BeginForm())
+            {
+
+
+                <div class="panel panel-default">
+                    <div class="panel-footer">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <h2 class="text-center login-title">@ViewBag.Texto1</h2>
+                                <h4 class="text-center login-title">Faça seu Login</h4>
+                            </div>
+                            <hr />
+                            <form action="">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        
+                                        @Html.TextBox("login","", new { @class = "form-control" })
+                                        <input type="password" class="form-control" name="Senha" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="remember-me" />Lembrar-me
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <input type="submit" class="btn" value="Entrar" />
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

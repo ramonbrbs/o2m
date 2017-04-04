@@ -12,6 +12,7 @@ namespace DAO.Repositories
         private DB context = new DB();
         private ParceiroRepo parceiroRep;
         private IndicadoRepo indicadoRep;
+        private BancoRepo bancoRep;
 
         public ParceiroRepo ParceiroRep
         {
@@ -23,6 +24,19 @@ namespace DAO.Repositories
                     this.parceiroRep = new ParceiroRepo(context);
                 }
                 return parceiroRep;
+            }
+        }
+
+        public BancoRepo BancoRep
+        {
+            get
+            {
+
+                if (this.bancoRep == null)
+                {
+                    this.bancoRep = new BancoRepo(context);
+                }
+                return bancoRep;
             }
         }
 

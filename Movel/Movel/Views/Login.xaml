@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Movel.Views.Login">
+    <AbsoluteLayout x:Name="AbsLayout">
+        <ActivityIndicator x:Name="Act" IsRunning="True" IsVisible="False" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
+        <ScrollView x:Name="Scroll" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout Margin="40,80,40,0" Spacing="15">
+                <Image Aspect="AspectFit" Source="logo.png"></Image>
+                <Entry x:Name="TxtEmail" HorizontalOptions="FillAndExpand" Placeholder="E-mail" Keyboard="Email"></Entry>
+
+                <Entry x:Name="TxtSenha" HorizontalOptions="FillAndExpand" Placeholder="Senha" IsPassword="True"></Entry>
+                <StackLayout Margin="40,20,40,0">
+                    <Button x:Name="BtnEntrar" Text="Acessar" BackgroundColor="#431FD4" TextColor="White" Clicked="BtnEntrar_OnClicked"></Button>
+                </StackLayout>
+                <StackLayout Margin="40,0,40,0">
+                    <Label FontSize="Small" Text="Sem cadastro?"></Label>
+                    <Button x:Name="BtnCadastrar" Text="Cadastrar" BackgroundColor="#431FD4" TextColor="White" Clicked="BtnCadastrar_OnClicked"></Button>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
+    
+</ContentPage>

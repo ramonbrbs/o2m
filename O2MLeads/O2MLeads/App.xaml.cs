@@ -11,8 +11,23 @@ namespace O2MLeads
     {
         public App()
         {
-            InitializeComponent();
-            MainPage = new NavigationPage(new Views.Login());
+            try
+            {
+                
+                MainPage = new NavigationPage(new Views.Login()
+                {
+                    Title = "Open Mobile Varejo",
+                    BackgroundColor = Color.White,
+                    
+                    
+                });
+            }
+            catch (Exception e)
+            {
+                
+                throw e;
+            }
+            
             
         }
 

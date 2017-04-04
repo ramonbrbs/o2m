@@ -48,17 +48,22 @@ namespace WS.Controllers
 
         }
 
-        public WSResponse<List<Indicado>>  Listar(Indicado.StatusLead? status, int page = 1)
+        [HttpGet]
+        [Route("Lead/Listar")]
+        public WSResponse<List<Indicado>>  Listar(Indicado.StatusLead? status, int page = 0)
         {
+            //TODO: Trocar para paginação
             var resp = new WSResponse<List<Indicado>>();
+            var codUser = Convert.ToInt32(User.Identity.Name);
             var u = new UOW();
+            
             if (status != null)
             {
-                resp.Content = u.IndicadoRep.Get(page: page, orderBy: indicados => indicados.OrderBy(i => i.CodParceiro)).ToList();
+                resp.Content = u.IndicadoRep.Get(i => i.CodParceiro == codUser, page: page, orderBy: indicados => indicados.OrderBy(i => i.CodParceiro)).ToList();
             }
             else
             {
-                resp.Content = u.IndicadoRep.Get(i => i.Status == status.Value, page: page,
+                resp.Content = u.IndicadoRep.Get(i => i.Status == status.Value && i.CodParceiro == codUser, page: page,
                     orderBy: indicados => indicados.OrderBy(i => i.CodParceiro)).ToList();
             }
             return resp;

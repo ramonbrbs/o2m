@@ -61,6 +61,9 @@
     <Compile Include="Views\Cadastro.xaml.cs">
       <DependentUpon>Cadastro.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Lista.xaml.cs">
+      <DependentUpon>Lista.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Menu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Lista.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

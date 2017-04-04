@@ -46,6 +46,11 @@ namespace Model.Entities
             set { _senha = Crypto.ConvertSHA1(value); }
         }
 
+        public void setSenhaSemMod(String senha)
+        {
+            _senha = senha;
+        }
+
 
 
 

@@ -24,5 +24,20 @@ namespace Movel.WS
                 throw;
             }
         }
+
+        public async static Task<WSResponse<object>> Listar(Parceiro p, int status, int pag = 0)
+        {
+            try
+            {
+                var url = Constantes.EnderecoWS + "/Lead/Listar";
+                OpenXamarin.WebRequest.Request req = new OpenXamarin.WebRequest.Request(url, new Dictionary<string, string>() { { "Auth", p.Token } });
+
+                return await req.Get<WSResponse<object>>(new Dictionary<string, string>(){{"status", status.ToString()}, {"page",pag.ToString()}});
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
     }
 }

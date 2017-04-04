@@ -63,15 +63,32 @@ namespace O2M.Controllers
             return RedirectToAction("Login");
         }
 
-        public ActionResult Editar(Parceiro p)
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
+        public ActionResult Editar(Parceiro p = null)
         {
-            if (ModelState.IsValid)
+            var codParceiro = Convert.ToInt32(User.Identity.Name);
+            var bancos = new UOW().BancoRep.Get(pagesize: 999, orderBy: q => q.OrderBy(a => a.CodBanco)).Select(b => new SelectListItem() { Value = b.CodBanco.ToString(), Text = b.Nome }).ToList();
+            ViewBag.bancos = bancos;
+            var parceiro = new UOW().ParceiroRep.GetFirst(pa => pa.CodParceiro == codParceiro);
+            if (Request.HttpMethod == "POST")
             {
-                var uow = new UOW();
-                uow.ParceiroRep.Update(p);
-                return View();
+                if (ModelState.IsValid)
+                {
+                    p.Nome = parceiro.Nome;
+                    p.CodParceiro = parceiro.CodParceiro;
+                    p.Documento = parceiro.Documento;
+                    p.Email = parceiro.Email;
+                    var uow = new UOW();
+                    if (String.IsNullOrEmpty(p.Senha))
+                    {
+                        p.setSenhaSemMod(parceiro.Senha);
+                    }
+                    uow.ParceiroRep.Update(p);
+                    return View();
+                }
             }
-            return View();
+            
+            return View(parceiro);
         }
 
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]

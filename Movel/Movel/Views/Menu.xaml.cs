@@ -28,5 +28,10 @@ namespace Movel.Views
                 Util.Error.FilterException(this,exception);
             }
         }
+
+        private void ListaClicked(object sender, EventArgs e)
+        {
+            Util.Navigation.AddToNavigation(Navigation, new Lista());
+        }
     }
 }

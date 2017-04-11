@@ -26,12 +26,12 @@
                         if (User.IsInRole("ADMIN"))
                         {
                             <li>@Html.ActionLink("Parceiros", "ListarParceiros", "Admin")</li>
-                            <li>@Html.ActionLink("Leads", "ListarLeads", "Admin")</li>
+                            <li>@Html.ActionLink("Indicados", "ListarLeads", "Admin")</li>
                         }
                         else
                         {
-                            <li>@Html.ActionLink("Meus Leads", "Listar", "Lead")</li>
-                            <li>@Html.ActionLink("Minhas Informações", "Listar", "Lead")</li>
+                            <li>@Html.ActionLink("Meus Indicados", "Listar", "Lead")</li>
+                            <li>@Html.ActionLink("Nova Indicação", "Cadastro", "Lead")</li>
                         }
                     }
                     
@@ -45,7 +45,6 @@
                             <ul class="dropdown-menu">
                                 <li><a href="#">Dados Pessoais</a></li>
                                 <li>@Html.ActionLink("Sair","Logoff","Parceiro")</li>
-
                             </ul>
                         </li>
                         

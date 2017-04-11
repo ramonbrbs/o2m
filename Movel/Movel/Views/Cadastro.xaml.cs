@@ -25,6 +25,11 @@ namespace Movel.Views
         {
             try
             {
+                if (TxtPassword1.Text != TxtPassword2.Text)
+                {
+                    DisplayAlert("", "Senha não confere", "OK");
+                    return;
+                }
                 var p = new Parceiro()
                 {
                     Agencia = TxtAgencia.Text,

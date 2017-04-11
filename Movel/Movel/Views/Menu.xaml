@@ -5,7 +5,7 @@
     <ScrollView>
         <StackLayout HorizontalOptions="Center" Spacing="30">
             <Button Text="Indicar Parceiro" Clicked="Button_OnClicked"></Button>
-            <Button Text="Minhas Indicações"></Button>
+            <Button Text="Minhas Indicações0" Clicked="ListaClicked"></Button>
             <Button Text="Sair"></Button>
         </StackLayout>
     </ScrollView>

@@ -13,6 +13,25 @@ namespace WS.Controllers
     [Authorize]
     public class LeadController : ApiController
     {
+
+        [Route("Lead/Info")]
+        [HttpGet]
+        public WSResponse<Indicado> Info(int codIndicado)
+        {
+            var resp = new WSResponse<Indicado>();
+            try
+            {
+                resp.Content =  new UOW().IndicadoRep.GetFirst( i => i.CodIndicado == codIndicado);
+                resp.Success = true;
+                return resp;
+            }
+            catch (Exception e)
+            {
+                return resp;
+            }
+            
+        }
+
         [Route("Lead/Cadastro")]
         public WSResponse<object> Cadastrar(Indicado indicado)
         {
@@ -50,23 +69,34 @@ namespace WS.Controllers
 
         [HttpGet]
         [Route("Lead/Listar")]
-        public WSResponse<List<Indicado>>  Listar(Indicado.StatusLead? status, int page = 0)
+        public WSResponse<List<Indicado>>  Listar(Indicado.StatusLead? status = null, int page = 0)
         {
-            //TODO: Trocar para paginação
             var resp = new WSResponse<List<Indicado>>();
-            var codUser = Convert.ToInt32(User.Identity.Name);
-            var u = new UOW();
+            try
+            {
+                //TODO: Trocar para paginação
+                
+                var codUser = Convert.ToInt32(User.Identity.Name);
+                var u = new UOW();
+
+                if (status == null)
+                {
+                    resp.Content = u.IndicadoRep.Get(i => i.CodParceiro == codUser, page: page, orderBy: indicados => indicados.OrderBy(i => i.CodParceiro)).ToList();
+                }
+                else
+                {
+                    resp.Content = u.IndicadoRep.Get(i => i.Status == status.Value && i.CodParceiro == codUser, page: page,
+                        orderBy: indicados => indicados.OrderBy(i => i.CodParceiro)).ToList();
+                }
+                resp.Success = true;
+                return resp;
+            }
+            catch (Exception e)
+            {
+
+                return resp;
+            }
             
-            if (status != null)
-            {
-                resp.Content = u.IndicadoRep.Get(i => i.CodParceiro == codUser, page: page, orderBy: indicados => indicados.OrderBy(i => i.CodParceiro)).ToList();
-            }
-            else
-            {
-                resp.Content = u.IndicadoRep.Get(i => i.Status == status.Value && i.CodParceiro == codUser, page: page,
-                    orderBy: indicados => indicados.OrderBy(i => i.CodParceiro)).ToList();
-            }
-            return resp;
 
 
         }

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Movel.Views.Visualizar">
+    <AbsoluteLayout x:Name="AbsLayout">
+        <ActivityIndicator x:Name="Act" IsVisible="False" IsRunning="True" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="Scroll">
+            <StackLayout Margin="5,10,5,5">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Status:" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Large"></Label>
+                    <Label Text="" FontSize="Large" x:Name="TxtStatus" FontAttributes="Bold"  VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" x:Name="StckComissao" IsVisible="False">
+                    <Label Text="Valor da Comissão:" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"></Label>
+                    <Label Text="" FontSize="Medium" x:Name="TxtValorLead" FontAttributes="Bold"  VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Contato:"  VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"></Label>
+                    <Label Text="" FontSize="Medium" x:Name="TxtContato"  VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Telefones:" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"></Label>
+                    <Label Text="" FontSize="Medium" x:Name="TxtTelefone1"  VerticalOptions="CenterAndExpand"></Label>
+                    <Label Text="/"></Label>
+                    <Label Text="" FontSize="Medium" x:Name="TxtTelefone2"  VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Email:"  VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"></Label>
+                    <Label Text="" FontSize="Medium" x:Name="TxtEmail"  VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+                
+                <StackLayout Margin="0,10,0,0">
+                    <Label Text="Informações da Indicação:" FontSize="Large" FontAttributes="Bold"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" IsVisible="False">
+                    <Label Text="Operadora:"  VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"></Label>
+                    <Label Text="" FontSize="Medium" x:Name="TxtOperadora"  VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" x:Name="StckLinhasMoveis" IsVisible="False">
+                    <Label Text="Qtd. Linhas Móveis:"  VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"></Label>
+                    <Label Text="" FontSize="Medium" x:Name="TxtLinhasMoveis"  VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" x:Name="StckLinhasFixas" IsVisible="False">
+                    <Label Text="Qtd. Linhas Fixas:"  VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"></Label>
+                    <Label Text="" FontSize="Medium" x:Name="TxtLinhasFixas"  VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" x:Name="StckBandaLarga" IsVisible="False">
+                    <Label Text="Qtd. Banda Larga:"  VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+                    <Label Text="" FontSize="Medium" x:Name="TxtBandaLarga"  VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Horizontal" x:Name="StckCentral" IsVisible="False">
+                    <Label Text="Qtd. Centrais Telefônicas:"  VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+                    <Label Text="" FontSize="Medium" x:Name="TxtCentral"  VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" x:Name="StckDedicado" IsVisible="False">
+                    <Label Text="Qtd. Links Dedicados:"  VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+                    <Label Text="" FontSize="Medium" x:Name="TxtDedicado"  VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
+</ContentPage>

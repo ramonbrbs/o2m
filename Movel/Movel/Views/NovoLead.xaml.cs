@@ -17,6 +17,10 @@ namespace Movel.Views
         public NovoLead()
         {
             InitializeComponent();
+            PckOperadoras.Items.Add("CLARO");
+            PckOperadoras.Items.Add("OI");
+            PckOperadoras.Items.Add("TIM");
+            PckOperadoras.Items.Add("VIVO");
         }
 
         private async void BtnCadastrar_OnClicked(object sender, EventArgs e)
@@ -28,7 +32,7 @@ namespace Movel.Views
                     Contato = TxtContato.Text,
                     Email = TxtEmail.Text,
                     Nome = TxtNome.Text,
-                    //Operadora = PckOperadoras.Items[PckOperadoras.SelectedIndex],
+                    Operadora = PckOperadoras.Items[PckOperadoras.SelectedIndex],
                     QtdBandaLarga = Convert.ToInt32(QtdBandaLarga.Text),
                     QtdCentraltelefonica = Convert.ToInt32(QtdCentralTelefonica.Text),
                     QtdLinhasFixas = Convert.ToInt32(QtdLinhasFixas.Text),

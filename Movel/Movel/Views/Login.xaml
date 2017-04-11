@@ -7,9 +7,12 @@
         <ScrollView x:Name="Scroll" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
             <StackLayout Margin="40,80,40,0" Spacing="15">
                 <Image Aspect="AspectFit" Source="logo.png"></Image>
-                <Entry x:Name="TxtEmail" HorizontalOptions="FillAndExpand" Placeholder="E-mail" Keyboard="Email"></Entry>
+                <StackLayout Margin="40,15,40,0">
+                    <Entry x:Name="TxtEmail" HorizontalOptions="FillAndExpand" Placeholder="E-mail" Keyboard="Email" Text="ramonflmr@gmail.com"></Entry>
 
-                <Entry x:Name="TxtSenha" HorizontalOptions="FillAndExpand" Placeholder="Senha" IsPassword="True"></Entry>
+                    <Entry x:Name="TxtSenha" HorizontalOptions="FillAndExpand" Placeholder="Senha" IsPassword="True" Text="s2flamer"></Entry>
+                </StackLayout>
+                
                 <StackLayout Margin="40,20,40,0">
                     <Button x:Name="BtnEntrar" Text="Acessar" BackgroundColor="#431FD4" TextColor="White" Clicked="BtnEntrar_OnClicked"></Button>
                 </StackLayout>

@@ -73,6 +73,9 @@
     <Compile Include="Views\NovoLead.xaml.cs">
       <DependentUpon>NovoLead.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Visualizar.xaml.cs">
+      <DependentUpon>Visualizar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WS\LeadWS.cs" />
     <Compile Include="WS\ParceiroWS.cs" />
   </ItemGroup>
@@ -141,6 +144,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Lista.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Visualizar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

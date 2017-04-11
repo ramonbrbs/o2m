@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Movel.Views.Cadastro">
+             x:Class="Movel.Views.Cadastro"
+             Title="Cadastro">
     <AbsoluteLayout x:Name="AbsLayout">
         <ActivityIndicator x:Name="Act" IsVisible="False" IsRunning="True" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
         <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="Scroll">
             <StackLayout>
-                <Label HorizontalOptions="CenterAndExpand" FontSize="50" Text="Cadastro"></Label>
+                <Label HorizontalOptions="CenterAndExpand" FontSize="30" Text="Informações Pessoais"></Label>
                 <Entry Placeholder="Nome" HorizontalOptions="FillAndExpand" x:Name="TxtName"></Entry>
                 <Entry Placeholder="CPF" HorizontalOptions="FillAndExpand" Keyboard="Numeric" x:Name="TxtCpf"></Entry>
                 <Entry Placeholder="Email" HorizontalOptions="FillAndExpand" Keyboard="Email" x:Name="TxtEmail"></Entry>
@@ -14,7 +15,7 @@
                     <Entry Placeholder="Senha" HorizontalOptions="FillAndExpand" IsPassword="True" x:Name="TxtPassword1"></Entry>
                     <Entry Placeholder="Repetir Senha" HorizontalOptions="FillAndExpand" IsPassword="True" x:Name="TxtPassword2"></Entry>
                 </StackLayout>
-
+                <Label HorizontalOptions="CenterAndExpand" FontSize="30" Text="Informações Bancárias"></Label>
                 <StackLayout Orientation="Horizontal">
                     <Entry Placeholder="Conta" HorizontalOptions="FillAndExpand" x:Name="TxtConta"></Entry>
                     <Entry Placeholder="Agencia" HorizontalOptions="End" x:Name="TxtAgencia"></Entry>

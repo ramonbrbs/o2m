@@ -17,8 +17,66 @@ namespace Movel.Views
         public Cadastro()
         {
             InitializeComponent();
+            try
+            {
+                Scroll.IsEnabled = false;
+                Act.IsRunning = true;
+                Act.IsVisible = true;
+                Task.Run(() =>
+                {
+                    CarregarBancos();
+                    
+                });
+            }
+            catch (Exception e)
+            {
+                
+                Util.Error.FilterException(this,e);
+            }
+            
+        }
 
-            //TODO: Colocar listagem de banco
+        
+
+        private List<Banco> bancos;
+        private async void CarregarBancos()
+        {
+            try
+            {
+                var retorno = await ParceiroWS.Bancos();
+                if (!retorno.Success)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await DisplayAlert("Erro", "Erro de rede. Verifique sua conexão.", "Ok");
+                    });
+                    return;
+
+                }
+                bancos = retorno.Content;
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    foreach (var b in bancos)
+                    {
+                        PckBanco.Items.Add(b.Nome);
+                    }
+                });
+
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            finally
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    Scroll.IsEnabled = true;
+                    Act.IsRunning = false;
+                    Act.IsVisible = false;
+                });
+                
+            }
         }
 
         private async void BtnCadastrar_OnClicked(object sender, EventArgs e)
@@ -30,6 +88,11 @@ namespace Movel.Views
                     DisplayAlert("", "Senha não confere", "OK");
                     return;
                 }
+                if (PckBanco.SelectedIndex == -1)
+                {
+                    DisplayAlert("", "Selecione um banco.", "OK");
+                    return;
+                }
                 var p = new Parceiro()
                 {
                     Agencia = TxtAgencia.Text,
@@ -38,7 +101,7 @@ namespace Movel.Views
                     Email = TxtEmail.Text,
                     Nome = TxtName.Text,
                     Senha = TxtPassword1.Text,
-                    CodBanco = 1
+                    CodBanco = bancos.FirstOrDefault(b => b.Nome == PckBanco.Items[PckBanco.SelectedIndex]).CodBanco
                 };
                 Scroll.IsEnabled = false;
                 Act.IsRunning = true;

@@ -53,6 +53,23 @@ namespace WS.Controllers
 
         }
 
+        [HttpGet]
+        [Route("Parceiro/Bancos")]
+        public WSResponse<List<Banco>> Bancos()
+        {
+            var resp = new WSResponse<List<Banco>>();
+            try
+            {
+                resp.Content = new UOW().BancoRep.Get(orderBy:bancos => bancos.OrderBy(b => b.Nome)).ToList();
+                resp.Success = true;
+                return resp;
+            }
+            catch (Exception e)
+            {
+                return resp;
+            }
+        }
+
         [Route("Parceiro/Login")]
         public WSResponse<Parceiro> Login(LoginVM login)
         {

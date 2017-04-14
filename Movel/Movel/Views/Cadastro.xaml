@@ -16,6 +16,7 @@
                     <Entry Placeholder="Repetir Senha" HorizontalOptions="FillAndExpand" IsPassword="True" x:Name="TxtPassword2"></Entry>
                 </StackLayout>
                 <Label HorizontalOptions="CenterAndExpand" FontSize="30" Text="Informações Bancárias"></Label>
+                <Picker x:Name="PckBanco" Title="Selecione o Banco"></Picker>
                 <StackLayout Orientation="Horizontal">
                     <Entry Placeholder="Conta" HorizontalOptions="FillAndExpand" x:Name="TxtConta"></Entry>
                     <Entry Placeholder="Agencia" HorizontalOptions="End" x:Name="TxtAgencia"></Entry>

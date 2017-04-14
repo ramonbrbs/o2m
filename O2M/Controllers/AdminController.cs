@@ -11,7 +11,7 @@ using O2M.UtilWEB;
 namespace O2M.Controllers
 {
     [Authorize(Roles = "ADMIN")]
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         // GET: Admin
         public ActionResult Index()

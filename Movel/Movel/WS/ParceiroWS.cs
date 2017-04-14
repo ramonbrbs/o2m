@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Movel.Model;
 using Movel.Model.Constantes;
@@ -24,6 +25,22 @@ namespace Movel.WS
             //var result = await retorno.Content.ReadAsStringAsync();
             //return JsonConvert.DeserializeObject<string>(result);
         }
+
+        public async static Task<WSResponse<List<Banco>>> Bancos()
+        {
+            try
+            {
+                var url = Constantes.EnderecoWS + "/Parceiro/Bancos";
+                OpenXamarin.WebRequest.Request req = new OpenXamarin.WebRequest.Request(url);
+
+                return await req.Get<WSResponse<List<Banco>>>();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public async static Task<WSResponse<object>> Cadastro(Parceiro parceiro)
         {
             try

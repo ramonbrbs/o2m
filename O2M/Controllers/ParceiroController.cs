@@ -11,7 +11,7 @@ using O2M.Models.Parceiro;
 
 namespace O2M.Controllers
 {
-    public class ParceiroController : Controller
+    public class ParceiroController : BaseController
     {
         // GET: Parceiro
         public ActionResult Index()

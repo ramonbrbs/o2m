@@ -73,6 +73,16 @@
     <Compile Include="Views\NovoLead.xaml.cs">
       <DependentUpon>NovoLead.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PagMenu.xaml.cs">
+      <DependentUpon>PagMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PagMenuDetail.xaml.cs">
+      <DependentUpon>PagMenuDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PagMenuMaster.xaml.cs">
+      <DependentUpon>PagMenuMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PagMenuMenuItem.cs" />
     <Compile Include="Views\Visualizar.xaml.cs">
       <DependentUpon>Visualizar.xaml</DependentUpon>
     </Compile>
@@ -150,6 +160,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Visualizar.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PagMenu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PagMenuMaster.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PagMenuDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

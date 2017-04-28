@@ -51,8 +51,9 @@ namespace Movel.Views
                         {
                             ConfigDAO.InsertConfig(new Config() {CodParceiro = result.Content.CodParceiro});
                             ParceiroDAO.InsertConfig(result.Content);
-                            Util.Navigation.AddToNavigation(Navigation, new Menu());
-                            Navigation.RemovePage(this);
+                            Application.Current.MainPage = new PagMenu();
+                            //Util.Navigation.AddToNavigation(Navigation, new Menu());
+                            //Navigation.RemovePage(this);
 
                         });
 

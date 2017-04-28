@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Movel.Views.NovoLead"
-             Title="Nova Indicação">
+             Title="Nova Indicação"
+             BackgroundImage="fundo.png">
     <AbsoluteLayout x:Name="AbsLayout">
         <ActivityIndicator x:Name="Act" IsRunning="True" IsVisible="False" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
         <ScrollView x:Name="Scroll" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
@@ -45,8 +46,8 @@
                     <Label Text="Qtd. de Links Dedicados:"></Label>
                     <Entry x:Name="QtdLinkDedicado" Keyboard="Numeric" HorizontalOptions="FillAndExpand"></Entry>
                 </StackLayout>
-                
-                <Button Text="Cadastrar" x:Name="BtnCadastrar" Clicked="BtnCadastrar_OnClicked"></Button>
+
+                <Button Text="Cadastrar" x:Name="BtnCadastrar" Clicked="BtnCadastrar_OnClicked" BackgroundColor="#431FD4" Opacity=".7" TextColor="White"></Button>
             </StackLayout>
         </ScrollView>
     </AbsoluteLayout>

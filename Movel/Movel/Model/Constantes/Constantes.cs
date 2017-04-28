@@ -2,6 +2,6 @@
 {
     public class Constantes
     {
-        public const string EnderecoWS = "http://192.168.25.2/api";
+        public const string EnderecoWS = "http://indiqueaiws-001-site1.atempurl.com";
     }
 }

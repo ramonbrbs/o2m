@@ -66,6 +66,7 @@ namespace WS.Controllers
             }
             catch (Exception e)
             {
+                resp.Errors.Add(e.Message);
                 return resp;
             }
         }

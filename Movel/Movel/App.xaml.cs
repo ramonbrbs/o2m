@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Movel.DAO;
+using Movel.Util;
+using Movel.Views;
 using Xamarin.Forms;
 
 namespace Movel
@@ -14,13 +16,24 @@ namespace Movel
             try
             {
 
-                MainPage = new NavigationPage(new Views.Login()
+                if (ConfigDAO.Get() != null)
                 {
-                    Title = "Open Mobile Varejo",
-                    BackgroundColor = Color.White,
+                    MainPage = new PagMenu();
+                }
+                else
+                {
+                    Session.Navigation = new NavigationPage(new Views.Login()
+                    {
+                        Title = "Open Mobile Varejo",
+                        BackgroundColor = Color.White,
 
 
-                });
+                    });
+                    MainPage = Session.Navigation;
+                }
+                
+
+
             }
             catch (Exception e)
             {

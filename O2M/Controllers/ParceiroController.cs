@@ -50,9 +50,9 @@ namespace O2M.Controllers
                 FormsAuthentication.SetAuthCookie(parceiro.CodParceiro.ToString(), false);
                 if (parceiro.IsAdmin)
                 {
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("ListarLeads", "Admin");
                 }
-                return RedirectToAction("");
+                return RedirectToAction("Index","Home");
             }
             return View();
         }

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Movel.Views.ComoFunciona"
+             Title="Como Funciona"
+             BackgroundImage="fundo.png">
+    <ScrollView>
+        <StackLayout>
+            <Label HorizontalOptions="Fill" FontSize="Medium" Text="Ao indicar um novo cliente, você receberá comissões proporcionais aos serviços vendidos após a aprovação do serviço"/>
+            <Label HorizontalOptions="Fill" Margin="0,8,0,0" Text="Verifique na tabela abaixo as taxas de comissões atuais:"/>
+            <Image Image.Aspect="AspectFit" Source="comissao.png"></Image>
+            <Label HorizontalOptions="CenterAndExpand" FontSize="Medium" FontAttributes="Bold" Text="Dúvidas?"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Image Source="iconmail.ong"></Image>
+                <Label Text="contato@o2mvivo.com.br"></Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
+                <Image Source="iconphone.ong"></Image>
+                <Label Text="(71) 3027-7866 / (71) 99908-5313"></Label>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -20,10 +20,10 @@ namespace Model.Entities
         [Key]
         public int CodIndicado { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Nome e requerido")]
         public string Nome { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Contato e requerido")]
         public string Contato { get; set; }
 
         [DisplayName("Telefone")]
@@ -34,6 +34,7 @@ namespace Model.Entities
 
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "O campo Operador e requerido")]
         public string Operadora { get; set; }
         
         public decimal ValorLead { get; set; }

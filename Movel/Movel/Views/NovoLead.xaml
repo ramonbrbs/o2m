@@ -7,7 +7,7 @@
     <AbsoluteLayout x:Name="AbsLayout">
         <ActivityIndicator x:Name="Act" IsRunning="True" IsVisible="False" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
         <ScrollView x:Name="Scroll" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-            <StackLayout>
+            <StackLayout x:Name="Stck">
                 <Label HorizontalOptions="CenterAndExpand" FontSize="30" Text="Dados Cadastrais"></Label>
                 <Entry Placeholder="Empresa" HorizontalOptions="FillAndExpand" x:Name="TxtNome"></Entry>
                 <Entry Placeholder="Contato" HorizontalOptions="FillAndExpand" x:Name="TxtContato"></Entry>

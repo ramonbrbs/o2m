@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Movel.Views.Menu">
     <ScrollView>
-        <StackLayout HorizontalOptions="Center" Spacing="30">
-            <Button Text="Indicar Parceiro" Clicked="Button_OnClicked"></Button>
-            <Button Text="Minhas Indicações0" Clicked="ListaClicked"></Button>
-            <Button Text="Sair"></Button>
+        <StackLayout x:Name="Stck" HorizontalOptions="FillAndExpand"  Spacing="30" Margin="20,10,15,0">
+            <Image Aspect="AspectFit" Source="logo.png"></Image>
+            <Button FontSize="Medium" HeightRequest="65"  Image="add.png" Text="Indicar Empresa" x:Name="BtnAdicionar" Clicked="Button_OnClicked"  HorizontalOptions="FillAndExpand" BackgroundColor="#431FD4" TextColor="White" Opacity=".7"></Button>
+            <Button FontSize="Medium" HeightRequest="65" Image="list.png" Text="Minhas Indicações" x:Name="BtnListar" Clicked="ListaClicked" HorizontalOptions="FillAndExpand" BackgroundColor="#431FD4" TextColor="White" Opacity=".7"></Button>
+            <Button FontSize="Medium" HeightRequest="65" Image="question.png" Text="Como Funciona" Clicked="BtnComo_OnClicked" x:Name="BtnComo" HorizontalOptions="FillAndExpand" BackgroundColor="#431FD4" TextColor="White" Opacity=".7"></Button>
+            <Button FontSize="Medium" HeightRequest="65" Image="exit.png" Text="Sair" x:Name="BtnSair" Clicked="BtnSair_OnClicked" HorizontalOptions="FillAndExpand" BackgroundColor="#431FD4" TextColor="White" Opacity=".7"></Button>
         </StackLayout>
     </ScrollView>
 </ContentPage>

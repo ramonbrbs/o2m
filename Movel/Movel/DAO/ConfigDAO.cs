@@ -32,6 +32,26 @@ namespace Movel.DAO
             }
         }
 
+        public static bool DeleteConfig()
+        {
+            try
+            {
+                var context = new ContextDAO();
+                var config = context.database.Table<Config>().FirstOrDefault();
+                if (config != null)
+                {
+                    context.database.Delete(config);
+                }
+                
+                return true;
+            }
+            catch (Exception e)
+            {
+                
+                throw;
+            }
+        }
+
         public static Config Get()
         {
             try

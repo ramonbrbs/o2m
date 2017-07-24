@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -53,6 +54,7 @@ namespace WS.Modules
 
         private static void OnApplicationAuthenticateRequest(object sender, EventArgs e)
         {
+            
             var request = HttpContext.Current.Request;
             var authHeader = request.Headers["Auth"];
             if (authHeader != null)

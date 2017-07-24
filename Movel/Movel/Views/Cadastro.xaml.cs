@@ -24,7 +24,15 @@ namespace Movel.Views
                 Act.IsVisible = true;
                 Task.Run(() =>
                 {
-                    CarregarBancos();
+                    try
+                    {
+                        CarregarBancos();
+                    }
+                    catch (Exception exx)
+                    {
+                        DisplayAlert("Erro", exx.Message,"ok");
+                    }
+                    
                     
                 });
             }

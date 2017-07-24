@@ -14,6 +14,9 @@ namespace WS.Controllers
 {
     public class ParceiroController : ApiController
     {
+
+
+
         [Route("Parceiro/Cadastro")]
         public WSResponse<object> Cadastro(Parceiro p)
         {

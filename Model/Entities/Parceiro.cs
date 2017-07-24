@@ -20,6 +20,7 @@ namespace Model.Entities
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "O campo CPF é obrigatório")]
+        [DisplayName("CPF")]
         public string Documento { get; set; }
 
         public string Agencia { get; set; }

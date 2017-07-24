@@ -27,9 +27,59 @@
             </AbsoluteLayout>
             
         </ContentPage>
-        <ContentPage Title="Pendentes" x:Name="CntPen" BackgroundImage="fundo.png" >
+
+        <ContentPage Title="Pendentes" x:Name="CntPendentes" BackgroundImage="fundo.png">
+            <AbsoluteLayout x:Name="AbsLayoutPendentes">
+                <ActivityIndicator x:Name="ActPendentes" IsVisible="False" IsRunning="True" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
+                <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                    <ListView x:Name="LstPendente">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding i.Nome}" Command="{Binding Command}" CommandParameter="{Binding i.CodIndicado}" Detail="{Binding i.Contato}" TextColor="Black"  DetailColor="#03293C" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+
+            </AbsoluteLayout>
+
         </ContentPage>
-        <ContentPage Title="Finalizados" x:Name="CntFin" BackgroundImage="fundo.png" >
+
+        <ContentPage Title="Aceitos" x:Name="CntAceitos" BackgroundImage="fundo.png">
+            <AbsoluteLayout x:Name="AbsLayoutAceitos">
+                <ActivityIndicator x:Name="ActAceitos" IsVisible="False" IsRunning="True" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
+                <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                    <ListView x:Name="LstAceitos">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding i.Nome}" Command="{Binding Command}" CommandParameter="{Binding i.CodIndicado}" Detail="{Binding i.Contato}" TextColor="Black"  DetailColor="#03293C" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+
+            </AbsoluteLayout>
+
+        </ContentPage>
+
+        <ContentPage Title="Rejeitados" x:Name="CntRemovidos" BackgroundImage="fundo.png">
+            <AbsoluteLayout x:Name="AbsLayoutRemovidos">
+                <ActivityIndicator x:Name="ActRemovidos" IsVisible="False" IsRunning="True" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
+                <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                    <ListView x:Name="LstRemovidos">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding i.Nome}" Command="{Binding Command}" CommandParameter="{Binding i.CodIndicado}" Detail="{Binding i.Contato}" TextColor="Black"  DetailColor="#03293C" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+
+            </AbsoluteLayout>
+
         </ContentPage>
     </TabbedPage.Children>
+    
+    
+    
 </TabbedPage>

@@ -30,21 +30,26 @@
                                 <div class="row">
                                     <div class="col-lg-12">
 
-                                        @Html.TextBox("login", "", new {@class = "form-control"})
-                                        <input type="password" class="form-control" name="Senha"/>
+                                        @Html.TextBox("login", "", new {@class = "form-control", placeholder= "E-mail"})
+                                        <input type="password" class="form-control" name="Senha" placeholder="Senha"/>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label class="checkbox">
-                                            <input type="checkbox" value="remember-me"/>Lembrar-me
-                                        </label>
+                                        
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <input type="submit" class="btn" value="Entrar"/>
+                                        <input type="submit" class="btn btn-primary" value="Entrar"/>
 
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 8px;">
+                                    
+                                    <div class="col-sm-12">
+                                        <small>Ou então <a href="@Url.Action("Cadastro", "Parceiro")">cadastre-se</a></small> <br/>
+                                        
                                     </div>
                                 </div>
                             </form>

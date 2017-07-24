@@ -32,7 +32,7 @@ namespace O2M.Controllers
                 if (!status.HasValue)
                 {
                     pag = pagRN.GetPaginacao(page, i => i.CodParceiro == id,
-                        orderBy: indicados => indicados.OrderBy(i => i.CodIndicado), pageSize: 1);
+                        orderBy: indicados => indicados.OrderBy(i => i.CodIndicado));
                 }
                 else
                 {
@@ -83,8 +83,10 @@ namespace O2M.Controllers
         {
             try
             {
+                var uid = Sessao.SelecionarIDUsuarioLogado();
+                var usuario = new UOW().ParceiroRep.GetFirst(u => u.CodParceiro == uid);
                 var codParceiro = Convert.ToInt32(User.Identity.Name);
-                var indicado = new UOW().IndicadoRep.GetFirst(i => i.CodIndicado == id && i.CodParceiro == codParceiro,includeProperties:"Parceiro");
+                var indicado = new UOW().IndicadoRep.GetFirst(i => i.CodIndicado == id && (i.CodParceiro == codParceiro || usuario.IsAdmin) ,includeProperties:"Parceiro");
                 if (indicado == null)
                 {
                     return HttpNotFound();

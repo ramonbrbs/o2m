@@ -32,9 +32,10 @@ namespace Movel.Views
             {
                 MenuItems = new ObservableCollection<PagMenuMenuItem>(new[]
                 {
-                    new PagMenuMenuItem { Id = 0, Title = "Meus Indicados", TargetType = typeof(Lista)},
-                    new PagMenuMenuItem { Id = 1, Title = "Indicar", TargetType = typeof(NovoLead) },
-                    new PagMenuMenuItem { Id = 2, Title = "Sair" },
+                    new PagMenuMenuItem { Id = 0, Title = "Minhas Indicações", TargetType = typeof(Lista)},
+                    new PagMenuMenuItem { Id = 1, Title = "Indicar Empresa", TargetType = typeof(NovoLead) },
+                    new PagMenuMenuItem { Id = 2, Title = "Como Funciona", TargetType = typeof(ComoFunciona) },
+                    new PagMenuMenuItem { Id = 3, Title = "Sair" },
                 });
             }
             public event PropertyChangedEventHandler PropertyChanged;

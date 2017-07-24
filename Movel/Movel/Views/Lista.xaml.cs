@@ -31,6 +31,9 @@ namespace Movel.Views
                 Task.Run(() =>
                 {
                     CarregarTodos();
+                    CarregarPendentes();
+                    CarregarAceitos();
+                    CarregarRejeitados();
                 });
             }
             catch (Exception e)
@@ -97,6 +100,184 @@ namespace Movel.Views
             }
             
         }
+
+        private async void CarregarPendentes()
+        {
+
+
+            try
+            {
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    ActPendentes.IsVisible = true;
+                    LstPendente.IsEnabled = false;
+                });
+
+                List<Item> itens = new List<Item>();
+                var parceiro = ParceiroDAO.Get();
+                var leads = await LeadWS.Listar(parceiro, 0);
+                if (leads.Success)
+                {
+                    foreach (var l in leads.Content)
+                    {
+                        itens.Add(new Item()
+                        {
+                            i = l,
+                            Command = new Command((object cod) => Selecionar(l.CodIndicado))
+                        });
+                    }
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        LstPendente.ItemsSource = itens;
+                    });
+
+                }
+                else
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        DisplayAlert("Erro", String.Join("\n", leads.Errors), "OK");
+                    });
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    ActPendentes.IsVisible = false;
+                    LstPendente.IsEnabled = true;
+                });
+
+            }
+
+        }
+
+
+        private async void CarregarAceitos()
+        {
+
+
+            try
+            {
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    ActAceitos.IsVisible = true;
+                    LstPendente.IsEnabled = false;
+                });
+
+                List<Item> itens = new List<Item>();
+                var parceiro = ParceiroDAO.Get();
+                var leads = await LeadWS.Listar(parceiro, 1);
+                if (leads.Success)
+                {
+                    foreach (var l in leads.Content)
+                    {
+                        itens.Add(new Item()
+                        {
+                            i = l,
+                            Command = new Command((object cod) => Selecionar(l.CodIndicado))
+                        });
+                    }
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        LstPendente.ItemsSource = itens;
+                    });
+
+                }
+                else
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        DisplayAlert("Erro", String.Join("\n", leads.Errors), "OK");
+                    });
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    ActAceitos.IsVisible = false;
+                    LstPendente.IsEnabled = true;
+                });
+
+            }
+
+        }
+
+
+
+        private async void CarregarRejeitados()
+        {
+
+
+            try
+            {
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    ActRemovidos.IsVisible = true;
+                    LstPendente.IsEnabled = false;
+                });
+
+                List<Item> itens = new List<Item>();
+                var parceiro = ParceiroDAO.Get();
+                var leads = await LeadWS.Listar(parceiro, 2);
+                if (leads.Success)
+                {
+                    foreach (var l in leads.Content)
+                    {
+                        itens.Add(new Item()
+                        {
+                            i = l,
+                            Command = new Command((object cod) => Selecionar(l.CodIndicado))
+                        });
+                    }
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        LstPendente.ItemsSource = itens;
+                    });
+
+                }
+                else
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        DisplayAlert("Erro", String.Join("\n", leads.Errors), "OK");
+                    });
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    ActRemovidos.IsVisible = false;
+                    LstPendente.IsEnabled = true;
+                });
+
+            }
+
+        }
+
 
         private void Selecionar(int cod)
         {

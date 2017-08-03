@@ -22,10 +22,16 @@ namespace Movel.Views
                 Scroll.IsEnabled = false;
                 Act.IsRunning = true;
                 Act.IsVisible = true;
+                Stack.Opacity = .7;
+                foreach (var s in Stack.Children)
+                {
+                    s.IsEnabled = false;
+                }
                 Task.Run(() =>
                 {
                     try
                     {
+                        
                         CarregarBancos();
                     }
                     catch (Exception exx)
@@ -82,6 +88,11 @@ namespace Movel.Views
                     Scroll.IsEnabled = true;
                     Act.IsRunning = false;
                     Act.IsVisible = false;
+                    Stack.Opacity = 1;
+                    foreach (var s in Stack.Children)
+                    {
+                        s.IsEnabled = true;
+                    }
                 });
                 
             }
@@ -124,10 +135,9 @@ namespace Movel.Views
                         {
                             
                             DisplayAlert("", "Cadastro realizado", "OK");
-                            
 
-                            Util.Navigation.AddToNavigation(Navigation, new Login());
-                            Navigation.RemovePage(this);
+
+                            Navigation.PopToRootAsync();
                         }
                         else
                         {

@@ -7,7 +7,7 @@
     <AbsoluteLayout x:Name="AbsLayout">
         <ActivityIndicator x:Name="Act" IsVisible="False" IsRunning="True" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
         <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="Scroll">
-            <StackLayout>
+            <StackLayout x:Name="Stack">
                 <Label HorizontalOptions="CenterAndExpand" FontSize="30" Text="Informações Pessoais"></Label>
                 <Entry Placeholder="Nome" HorizontalOptions="FillAndExpand" x:Name="TxtName"></Entry>
                 <Entry Placeholder="CPF" HorizontalOptions="FillAndExpand" Keyboard="Numeric" x:Name="TxtCpf"></Entry>

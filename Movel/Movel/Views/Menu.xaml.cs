@@ -17,29 +17,23 @@ namespace Movel.Views
         public Menu()
         {
             InitializeComponent();
+            NavigationPage.SetTitleIcon(this, "form.png");
+            NavigationPage.SetHasNavigationBar(this,false);
             
+
         }
 
-        protected override void OnAppearing()
+        protected override void OnSizeAllocated(double width, double height)
         {
-            //Task.Run(() =>
-            //{
-            //    while (Application.Current.MainPage.Width < 0)
-            //    {
-                    
-            //    }
-            //    Device.BeginInvokeOnMainThread(() =>
-            //    {
-            //        var size = new Size()
-            //        {
-            //            Width = Application.Current.MainPage.Width * 0.15,
-            //            Height = Application.Current.MainPage.Height * 0.3
-            //    };
-            //        Stck.Margin = new Thickness(size.Width, size.Height, size.Width, 0);                    
-            //    });
-            //});
+            base.OnSizeAllocated(width, height);
+            var wd = width / 2 - 40;
+            GridMain.ColumnDefinitions[0].Width = wd ;
+            GridMain.ColumnDefinitions[1].Width = wd;
 
+            GridMain.RowDefinitions[0].Height = wd;
+            GridMain.RowDefinitions[1].Height = wd;
         }
+
 
         private void Button_OnClicked(object sender, EventArgs e)
         {

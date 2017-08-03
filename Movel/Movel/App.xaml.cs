@@ -24,7 +24,7 @@ namespace Movel
                 {
                     Session.Navigation = new NavigationPage(new Views.Login()
                     {
-                        Title = "Open Mobile Varejo",
+                        Title = "Indique Aí",
                         BackgroundColor = Color.White,
 
 

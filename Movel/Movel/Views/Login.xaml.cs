@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Movel.DAO;
 using Movel.Model;
+using Movel.Util;
 using Movel.WS;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -51,7 +52,9 @@ namespace Movel.Views
                         {
                             ConfigDAO.InsertConfig(new Config() {CodParceiro = result.Content.CodParceiro});
                             ParceiroDAO.InsertConfig(result.Content);
-                            Application.Current.MainPage = new PagMenu();
+                            Session.Master = new PagMenu();
+                            Application.Current.MainPage = Session.Master;
+
                             //Util.Navigation.AddToNavigation(Navigation, new Menu());
                             //Navigation.RemovePage(this);
 

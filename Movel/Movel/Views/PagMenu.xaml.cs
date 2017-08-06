@@ -15,9 +15,10 @@ namespace Movel.Views
     {
         public PagMenu()
         {
+            Session.Navigation = new NavigationPage(new Menu());
             InitializeComponent();
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
-            Session.Navigation = new NavigationPage(new Menu());
+            
             Detail = Session.Navigation;
         }
 

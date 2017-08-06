@@ -55,6 +55,7 @@
     <Compile Include="Model\Parceiro.cs" />
     <Compile Include="Model\WSResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Animacao.cs" />
     <Compile Include="Util\Constants.cs" />
     <Compile Include="Util\Error.cs" />
     <Compile Include="Util\Navigation.cs" />
@@ -73,6 +74,9 @@
     </Compile>
     <Compile Include="Views\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NavbarMenu.xaml.cs">
+      <DependentUpon>NavbarMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NovoLead.xaml.cs">
       <DependentUpon>NovoLead.xaml</DependentUpon>
@@ -188,6 +192,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ComoFunciona.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\NavbarMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

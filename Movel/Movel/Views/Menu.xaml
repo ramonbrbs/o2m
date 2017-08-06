@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Movel.Views.Menu"
+             xmlns:views="clr-namespace:Movel.Views"
              BackgroundImage="fundo.png">
     
         <!--<Grid  HorizontalOptions="FillAndExpand" HeightRequest="65">
@@ -18,17 +19,31 @@
         </Grid>-->
         <ScrollView x:Name="Scroll">
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            
-            <Grid Margin="10,22,10,0" HorizontalOptions="FillAndExpand" x:Name="GridMain" ColumnSpacing="20" RowSpacing="20">
+            <views:NavbarMenu />
+            <!--<StackLayout x:Name="StackMenu" HeightRequest="40" BackgroundColor="Aqua">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="GrdMenu" BackgroundColor="#1F4AD4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                        <ColumnDefinition Width="11*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Margin="5,2,2,3" Source="menu.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="Fill"></Image>
+                </Grid>
+            </StackLayout>-->
+            <Grid Margin="15,20,15,0" HorizontalOptions="FillAndExpand" x:Name="GridMain" ColumnSpacing="20" RowSpacing="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="160"></RowDefinition>
                     <RowDefinition Height="160"></RowDefinition>
                     <RowDefinition Height="160"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                     
-                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Row="0" Grid.Column="0" BackgroundColor="#7C1F4AD4" x:Name="GridIndicacoes">
                     <Grid.RowDefinitions>

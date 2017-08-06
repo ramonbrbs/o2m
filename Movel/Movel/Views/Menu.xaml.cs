@@ -19,14 +19,25 @@ namespace Movel.Views
             InitializeComponent();
             NavigationPage.SetTitleIcon(this, "form.png");
             NavigationPage.SetHasNavigationBar(this,false);
+
+            GridIndicacoes.GestureRecognizers.Add(new TapGestureRecognizer()
+            {
+                Command = new Command(() =>
+                {
+                    Util.Animacao.FadeOutIn(GridIndicacoes);
+                    ListaClicked();
+                })
+            });
+
             
+
 
         }
 
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height);
-            var wd = width / 2 - 40;
+            var wd = (width / 2) - 25;
             GridMain.ColumnDefinitions[0].Width = wd ;
             GridMain.ColumnDefinitions[1].Width = wd;
 
@@ -48,7 +59,7 @@ namespace Movel.Views
             }
         }
 
-        private void ListaClicked(object sender, EventArgs e)
+        private void ListaClicked()
         {
             Util.Navigation.AddToNavigation(Session.Navigation.Navigation, new Lista());
         }
@@ -69,6 +80,11 @@ namespace Movel.Views
         {
             ConfigDAO.DeleteConfig();
             Application.Current.MainPage = new Login();
+        }
+
+        private void BtnMenu_OnClicked(object sender, EventArgs e)
+        {
+            Session.Master.IsPresented = true;
         }
     }
 }

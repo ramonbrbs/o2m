@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Movel.Views.Lista"
             Title="Indicados"
+            xmlns:views="clr-namespace:Movel.Views"
             BackgroundImage="fundo.png">
     <!--<AbsoluteLayout x:Name="AbsLayout">
         <ActivityIndicator x:Name="Act" IsVisible="False" IsRunning="True" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
@@ -10,8 +11,10 @@
             
         </ScrollView>
     </AbsoluteLayout>-->
+
     <TabbedPage.Children>
         <ContentPage Title="Todos" x:Name="CntTodos" BackgroundImage="fundo.png">
+            <views:NavbarMenu />
             <AbsoluteLayout x:Name="AbsLayout">
                 <ActivityIndicator x:Name="ActTodos" IsVisible="False" IsRunning="True" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
                 <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
@@ -29,6 +32,7 @@
         </ContentPage>
 
         <ContentPage Title="Pendentes" x:Name="CntPendentes" BackgroundImage="fundo.png">
+            <views:NavbarMenu />
             <AbsoluteLayout x:Name="AbsLayoutPendentes">
                 <ActivityIndicator x:Name="ActPendentes" IsVisible="False" IsRunning="True" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
                 <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
@@ -46,6 +50,7 @@
         </ContentPage>
 
         <ContentPage Title="Aceitos" x:Name="CntAceitos" BackgroundImage="fundo.png">
+            <views:NavbarMenu />
             <AbsoluteLayout x:Name="AbsLayoutAceitos">
                 <ActivityIndicator x:Name="ActAceitos" IsVisible="False" IsRunning="True" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
                 <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
@@ -63,6 +68,7 @@
         </ContentPage>
 
         <ContentPage Title="Rejeitados" x:Name="CntRemovidos" BackgroundImage="fundo.png">
+            <views:NavbarMenu />
             <AbsoluteLayout x:Name="AbsLayoutRemovidos">
                 <ActivityIndicator x:Name="ActRemovidos" IsVisible="False" IsRunning="True" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
                 <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">

@@ -18,7 +18,8 @@ namespace Movel
 
                 if (ConfigDAO.Get() != null)
                 {
-                    MainPage = new PagMenu();
+                    Session.Master = new PagMenu();
+                    MainPage = Session.Master;
                 }
                 else
                 {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Movel.DAO;
 using Movel.Util;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -27,8 +28,16 @@ namespace Movel.Views
             var item = e.SelectedItem as PagMenuMenuItem;
             if (item.Id == 3)
             {
-                Application.Current.MainPage = new Login();
-                
+                ConfigDAO.DeleteConfig();
+                Session.Navigation = new NavigationPage(new Views.Login()
+                {
+                    Title = "Indique Aí",
+                    BackgroundColor = Color.White,
+
+
+                });
+                Application.Current.MainPage = Session.Navigation;
+
                 return;
                             }
             if (item == null)

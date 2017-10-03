@@ -23,7 +23,7 @@ namespace Movel.Views
 
         private void BtnCadastrar_OnClicked(object sender, EventArgs e)
         {
-            Util.Navigation.AddToNavigation(Navigation, new Cadastro());
+            Util.Navigation.AddToNavigation(Navigation, new CadastroNovo());
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
                 

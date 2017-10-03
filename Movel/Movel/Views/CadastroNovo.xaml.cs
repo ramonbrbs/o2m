@@ -10,13 +10,12 @@ using Xamarin.Forms.Xaml;
 
 namespace Movel.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Cadastro : ContentPage
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class CadastroNovo : CarouselPage
     {
-        public String teste;
-        public Cadastro()
-        {
-            InitializeComponent();
+		public CadastroNovo ()
+		{
+			InitializeComponent ();
             try
             {
                 Scroll.IsEnabled = false;
@@ -31,26 +30,24 @@ namespace Movel.Views
                 {
                     try
                     {
-                        
+
                         CarregarBancos();
                     }
                     catch (Exception exx)
                     {
-                        DisplayAlert("Erro", exx.Message,"ok");
+                        DisplayAlert("Erro", exx.Message, "ok");
                     }
-                    
-                    
+
+
                 });
             }
             catch (Exception e)
             {
-                
-                Util.Error.FilterException(this,e);
-            }
-            
-        }
 
-        
+                Util.Error.FilterException(this, e);
+            }
+
+        }
 
         private List<Banco> bancos;
         private async void CarregarBancos()
@@ -94,22 +91,50 @@ namespace Movel.Views
                         s.IsEnabled = true;
                     }
                 });
-                
+
             }
         }
 
-        private async void BtnCadastrar_OnClicked(object sender, EventArgs e)
+        protected override void OnCurrentPageChanged()
+        {
+
+            this.Title =  this.CurrentPage.Title;
+            base.OnCurrentPageChanged();
+        }
+        private async Task AnimateItem(Page uiElement, uint duration)
+        {
+            await Task.WhenAll(new Task[] {
+                uiElement.ScaleTo(1.5, duration, Easing.CubicIn),
+                uiElement.FadeTo(1, duration/2, Easing.CubicInOut).ContinueWith(
+                    _ =>
+                    {
+                        // Queing on UI to workaround an issue with Forms 2.1
+                        Device.BeginInvokeOnMainThread(() => {
+                            uiElement.ScaleTo(1, duration, Easing.CubicOut);
+                        });
+                    })
+            });
+        }
+
+        private async void Proximo_Clicked(object sender, EventArgs e)
+        {
+            this.CurrentPage = PageBancarios;
+            await AnimateItem(PageBancarios, 500);
+        }
+
+        private async void Button_OnClicked(object sender, EventArgs e)
         {
             try
             {
-                
                 if (TxtPassword1.Text != TxtPassword2.Text)
                 {
+                    this.CurrentPage = PagePessoais;
                     DisplayAlert("", "Senha não confere", "OK");
                     return;
                 }
                 if (PckBanco.SelectedIndex == -1)
                 {
+                    this.CurrentPage = PagePessoais;
                     DisplayAlert("", "Selecione um banco.", "OK");
                     return;
                 }
@@ -123,54 +148,57 @@ namespace Movel.Views
                     Senha = TxtPassword1.Text,
                     CodBanco = bancos.FirstOrDefault(b => b.Nome == PckBanco.Items[PckBanco.SelectedIndex]).CodBanco
                 };
-                Scroll.IsEnabled = false;
-                Act.IsRunning = true;
-                Act.IsVisible = true;
-                
 
-
-                    try
+                foreach (var s in Stack2.Children)
+                {
+                    s.IsEnabled = false;
+                }
+                Act2.IsVisible = true;
+                try
+                {
+                    var retorno = await ParceiroWS.Cadastro(p);
+                    if (retorno.Success)
                     {
-                        var retorno = await ParceiroWS.Cadastro(p);
-                        if (retorno.Success)
+
+                        DisplayAlert("", "Cadastro realizado", "OK");
+
+
+                        Navigation.PopToRootAsync();
+                    }
+                    else
+                    {
+
+                        DisplayAlert("Erro", String.Join("\n", retorno.Errors), "Ok");
+
+
+
+
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Util.Error.FilterException(this, exception);
+                }
+                finally
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        foreach (var s in Stack2.Children)
                         {
-                            
-                            DisplayAlert("", "Cadastro realizado", "OK");
-
-
-                            Navigation.PopToRootAsync();
+                            s.IsEnabled = true;
                         }
-                        else
-                        {
-                            
-                                DisplayAlert("Erro", String.Join("\n", retorno.Errors), "Ok");
-                            
-                                
-                            
+                        Act2.IsVisible = false;
+                    });
 
-                        }
-                    }
-                    catch (Exception exception)
-                    {
-                        Util.Error.FilterException(this, exception);
-                    }
-                    finally
-                    {
-                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                        {
-                            Scroll.IsEnabled = true;
-                            Act.IsVisible = false;
-                        });
-
-                    }
+                }
 
 
             }
             catch (Exception exception)
             {
                 Util.Error.FilterException(this, exception);
-            }
-
+                this.CurrentPage = PagePessoais;
+            }   
         }
     }
 }

@@ -4,7 +4,7 @@
              
              x:Class="Movel.Views.NavbarMenu">
 
-    <Grid BackgroundColor="#2196f3" HeightRequest="50"
+    <Grid BackgroundColor="#2196f3" HeightRequest="40"
 			
 			Padding="0">
 

@@ -48,32 +48,32 @@
                 <Grid Grid.Row="0" Grid.Column="0" BackgroundColor="#7C1F4AD4" x:Name="GridIndicacoes">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="12*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Image Source="people.png" Image.Aspect="AspectFit" Grid.Row="1"  VerticalOptions="Fill" HorizontalOptions="Fill" />
-                    <Label Grid.Row="2" Grid.RowSpan="2" XAlign="Center" Text="Minhas Indicações" HorizontalOptions="Center" VerticalOptions="EndAndExpand" FontSize="Large" FontAttributes="Bold" TextColor="White"/>
+                    <Label Grid.Row="2" Grid.RowSpan="2" XAlign="Center" Text="Minhas Indicações" HorizontalOptions="Center" VerticalOptions="StartAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="White"/>
                 </Grid>
-                <Grid Grid.Row="0" Grid.Column="1" BackgroundColor="#7C1F4AD4" x:Name="GridPreco">
+                <Grid Grid.Row="0" Grid.Column="1" BackgroundColor="#7C1F4AD4" x:Name="GridIndicar">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="12*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Image Source="adduser.png" Image.Aspect="AspectFit" Grid.Row="1"  VerticalOptions="Fill" HorizontalOptions="Fill" />
-                    <Label Grid.Row="2" Grid.RowSpan="2" XAlign="Center" Text="Indicar Empresa" HorizontalOptions="Center" VerticalOptions="EndAndExpand" FontSize="Large" FontAttributes="Bold" TextColor="White"/>
+                    <Label Grid.Row="2" Grid.RowSpan="2" XAlign="Center" Text="Indicar Empresa" HorizontalOptions="Center" VerticalOptions="StartAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="White"/>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="0" BackgroundColor="#7C1F4AD4" x:Name="GridComo">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="12*"></RowDefinition>
-                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="8*"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Image Source="questionbig.png" Image.Aspect="AspectFit" Grid.Row="1"  VerticalOptions="Fill" HorizontalOptions="Fill" />
-                    <Label Grid.Row="2" Grid.RowSpan="2" XAlign="Center" Text="Como Funciona" HorizontalOptions="Center" VerticalOptions="EndAndExpand" FontSize="Large" FontAttributes="Bold" TextColor="White"/>
+                    <Label Grid.Row="2" Grid.RowSpan="2" XAlign="Center" Text="Como Funciona" HorizontalOptions="Center" VerticalOptions="StartAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="White"/>
                 </Grid>
             </Grid>
             

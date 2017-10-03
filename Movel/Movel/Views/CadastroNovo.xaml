@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Movel.Views.CadastroNovo" InputTransparent="True" >
+    <ContentPage InputTransparent="True" BackgroundImage="fundo.png" Title="Dados Pessoais" x:Name="PagePessoais">
+        <AbsoluteLayout x:Name="AbsLayout">
+            <ActivityIndicator x:Name="Act" IsVisible="False" IsRunning="True" AbsoluteLayout.LayoutBounds="0.5,.5,0.5,0.5" AbsoluteLayout.LayoutFlags="All"></ActivityIndicator>
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="Scroll">
+                <StackLayout x:Name="Stack">
+                    
+                        
+                    <Entry Placeholder="Nome" HorizontalOptions="FillAndExpand" x:Name="TxtName" TextColor="#212121" PlaceholderColor="#616161"></Entry>
+                    <Entry Placeholder="CPF" HorizontalOptions="FillAndExpand" Keyboard="Numeric" x:Name="TxtCpf" TextColor="#212121" PlaceholderColor="#616161"></Entry>
+                    <Entry Placeholder="Email" HorizontalOptions="FillAndExpand" Keyboard="Email" x:Name="TxtEmail" TextColor="#212121" PlaceholderColor="#616161"></Entry>
+                <StackLayout Orientation="Horizontal">
+                        <Entry Placeholder="Senha" HorizontalOptions="FillAndExpand" IsPassword="True" x:Name="TxtPassword1" TextColor="#212121" PlaceholderColor="#616161"></Entry>
+                        <Entry Placeholder="Repetir Senha" HorizontalOptions="FillAndExpand" IsPassword="True" x:Name="TxtPassword2" TextColor="#212121" PlaceholderColor="#616161"></Entry>
+                </StackLayout>
+                    <Button Margin="0,15,0,0" Image="next.png" TextColor="White" Text="Próximo" BackgroundColor="#431FD4" Opacity=".7" ContentLayout="Right,0" HorizontalOptions="EndAndExpand" WidthRequest="200" Clicked="Proximo_Clicked"/>
+                </StackLayout>
+            </ScrollView>
+        </AbsoluteLayout>
+    </ContentPage>
+    <ContentPage InputTransparent="True" Title="Informações Bancárias" BackgroundImage="fundo.png" x:Name="PageBancarios">
+        <StackLayout x:Name="Stack2" >
+            <Picker x:Name="PckBanco" Title="Selecione o Banco"></Picker>
+            <StackLayout Orientation="Horizontal">
+                <Entry Placeholder="Conta" HorizontalOptions="FillAndExpand" x:Name="TxtConta"></Entry>
+                <Entry Placeholder="Agencia" HorizontalOptions="End" x:Name="TxtAgencia"></Entry>
+            </StackLayout>
+            <ActivityIndicator x:Name="Act2" IsVisible="False" IsRunning="True" HorizontalOptions="CenterAndExpand"></ActivityIndicator>
+            <Button Margin="0,15,0,0"  TextColor="White" Text="Cadastrar" BackgroundColor="#388e3c" Opacity=".7" HorizontalOptions="Center" WidthRequest="200" Clicked="Button_OnClicked" />
+        </StackLayout>
+    </ContentPage>
+</CarouselPage>

@@ -28,8 +28,24 @@ namespace Movel.Views
                     ListaClicked();
                 })
             });
+            GridIndicar.GestureRecognizers.Add(new TapGestureRecognizer()
+            {
+                Command = new Command(() =>
+                {
+                    Util.Animacao.FadeOutIn(GridIndicacoes);
+                    Indicar_OnClicked();
+                })
+            });
 
-            
+            GridComo.GestureRecognizers.Add(new TapGestureRecognizer()
+            {
+                Command = new Command(() =>
+                {
+                    Util.Animacao.FadeOutIn(GridIndicacoes);
+                    BtnComo_OnClicked();
+                })
+            });
+
 
 
         }
@@ -41,12 +57,12 @@ namespace Movel.Views
             GridMain.ColumnDefinitions[0].Width = wd ;
             GridMain.ColumnDefinitions[1].Width = wd;
 
-            GridMain.RowDefinitions[0].Height = wd;
-            GridMain.RowDefinitions[1].Height = wd;
+            GridMain.RowDefinitions[0].Height = wd >= 120 ? wd : 120 ;
+            GridMain.RowDefinitions[1].Height = wd >= 135 ? wd : 135; ; //wd >= 120 ? wd : 120;
         }
 
 
-        private void Button_OnClicked(object sender, EventArgs e)
+        private void Indicar_OnClicked()
         {
             try
             {
@@ -64,7 +80,7 @@ namespace Movel.Views
             Util.Navigation.AddToNavigation(Session.Navigation.Navigation, new Lista());
         }
 
-        private void BtnComo_OnClicked(object sender, EventArgs e)
+        private void BtnComo_OnClicked()
         {
             try
             {

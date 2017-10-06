@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Movel.Views.NovoLead2">
+    <ContentPage InputTransparent="True" Title="Informações Bancárias" BackgroundImage="fundo.png" x:Name="PageBancarios">
+        <StackLayout x:Name="Stack2" >
+            <Image WidthRequest="300" HeightRequest="32" Aspect="AspectFit" Source="dadoscadastrais.png" HorizontalOptions="Start"></Image>
+            <Entry Placeholder="Empresa" HorizontalOptions="FillAndExpand" x:Name="TxtNome">
+            </Entry>
+            <Entry Placeholder="Contato" HorizontalOptions="FillAndExpand" x:Name="TxtContato"></Entry>
+            <Entry Placeholder="Telefone de Contato" HorizontalOptions="FillAndExpand" Keyboard="Telephone" x:Name="TxtTelefone1"></Entry>
+            <Entry Placeholder="Telefone de Contato (2)" HorizontalOptions="FillAndExpand" Keyboard="Telephone" x:Name="TxtTelefone2"></Entry>
+            <Entry Placeholder="Email" HorizontalOptions="FillAndExpand" Keyboard="Email" x:Name="TxtEmail"></Entry>
+        </StackLayout>
+    </ContentPage>
+    
+</CarouselPage>

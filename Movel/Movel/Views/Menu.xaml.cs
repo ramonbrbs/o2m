@@ -4,62 +4,85 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Movel.DAO;
+using Movel.Model.Constantes;
 using Movel.Util;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace Movel.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Menu : ContentPage
     {
-        
+        public class VMMenu
+        {
+            public ImageSource Image { get; set; }
+            public String Title { get; set; }
+            public Type Type { get; set; }
+        }
+
         public Menu()
         {
             InitializeComponent();
-            NavigationPage.SetTitleIcon(this, "form.png");
-            NavigationPage.SetHasNavigationBar(this,false);
+            try
+            {
+                NavigationPage.SetHasNavigationBar(this, false);
+                List<VMMenu> listaMenu = new List<VMMenu>();
 
-            GridIndicacoes.GestureRecognizers.Add(new TapGestureRecognizer()
-            {
-                Command = new Command(() =>
-                {
-                    Util.Animacao.FadeOutIn(GridIndicacoes);
-                    ListaClicked();
-                })
-            });
-            GridIndicar.GestureRecognizers.Add(new TapGestureRecognizer()
-            {
-                Command = new Command(() =>
-                {
-                    Util.Animacao.FadeOutIn(GridIndicacoes);
-                    Indicar_OnClicked();
-                })
-            });
 
-            GridComo.GestureRecognizers.Add(new TapGestureRecognizer()
+                listaMenu.Add(new VMMenu() { Image = "form.jpg", Title = "Minhas Indicações", Type = typeof(Lista) });
+                listaMenu.Add(new VMMenu() { Image = "adduser.jpg", Title = "Indicar Empresa", Type = typeof(NovoLead) });
+                listaMenu.Add(new VMMenu() { Image = "questionbig.jpg", Title = "Como funciona", Type = typeof(ComoFunciona) });
+                listView.ItemsSource = listaMenu;
+            }
+            catch (Exception ex)
             {
-                Command = new Command(() =>
-                {
-                    Util.Animacao.FadeOutIn(GridIndicacoes);
-                    BtnComo_OnClicked();
-                })
-            });
+
+                throw ex;
+            }
+            
+
+            //GridIndicacoes.GestureRecognizers.Add(new TapGestureRecognizer()
+            //{
+            //    Command = new Command(() =>
+            //    {
+            //        Util.Animacao.FadeOutIn(GridIndicacoes);
+            //        ListaClicked();
+            //    })
+            //});
+            //GridIndicar.GestureRecognizers.Add(new TapGestureRecognizer()
+            //{
+            //    Command = new Command(() =>
+            //    {
+            //        Util.Animacao.FadeOutIn(GridIndicacoes);
+            //        Indicar_OnClicked();
+            //    })
+            //});
+
+            //GridComo.GestureRecognizers.Add(new TapGestureRecognizer()
+            //{
+            //    Command = new Command(() =>
+            //    {
+            //        Util.Animacao.FadeOutIn(GridIndicacoes);
+            //        BtnComo_OnClicked();
+            //    })
+            //});
 
 
 
         }
 
-        protected override void OnSizeAllocated(double width, double height)
-        {
-            base.OnSizeAllocated(width, height);
-            var wd = (width / 2) - 25;
-            GridMain.ColumnDefinitions[0].Width = wd ;
-            GridMain.ColumnDefinitions[1].Width = wd;
+        //protected override void OnSizeAllocated(double width, double height)
+        //{
+        //    base.OnSizeAllocated(width, height);
+        //    var wd = (width / 2) - 25;
+        //    GridMain.ColumnDefinitions[0].Width = wd ;
+        //    GridMain.ColumnDefinitions[1].Width = wd;
 
-            GridMain.RowDefinitions[0].Height = wd >= 120 ? wd : 120 ;
-            GridMain.RowDefinitions[1].Height = wd >= 135 ? wd : 135; ; //wd >= 120 ? wd : 120;
-        }
+        //    GridMain.RowDefinitions[0].Height = wd >= 120 ? wd : 120 ;
+        //    GridMain.RowDefinitions[1].Height = wd >= 135 ? wd : 135; ; //wd >= 120 ? wd : 120;
+        //}
 
 
         private void Indicar_OnClicked()
@@ -102,5 +125,27 @@ namespace Movel.Views
         {
             Session.Master.IsPresented = true;
         }
+
+        private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var item = (VMMenu)e.ItemData;
+            var instance = Activator.CreateInstance(item.Type);
+
+            if (item.Title == "Minhas Indicações")
+            {
+                Util.Navigation.AddToNavigation(Session.Navigation.Navigation, new Lista());
+            }else if (item.Title == "Indicar Empresa")
+            {
+                Util.Navigation.AddToNavigation(Session.Navigation.Navigation, new NovoLead());
+            }
+            else
+            {
+                Util.Navigation.AddToNavigation(Session.Navigation.Navigation, new ComoFunciona());
+            }
+            
+            listView.SelectedItem = null;
+
+        }
     }
-}
+    }
+

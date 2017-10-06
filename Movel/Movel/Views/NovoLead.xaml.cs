@@ -33,11 +33,11 @@ namespace Movel.Views
                     Contato = TxtContato.Text,
                     Email = TxtEmail.Text,
                     Nome = TxtNome.Text,
-                    QtdBandaLarga = Convert.ToInt32(QtdBandaLarga.Text),
-                    QtdCentraltelefonica = Convert.ToInt32(QtdCentralTelefonica.Text),
-                    QtdLinhasFixas = Convert.ToInt32(QtdLinhasFixas.Text),
-                    QtdLinhasMoveis = Convert.ToInt32(QtdLinhasMoveis.Text),
-                    QtdLinkDedicado = Convert.ToInt32(QtdLinkDedicado.Text),
+                    QtdBandaLarga = Convert.ToInt32(QtdBandaLarga.Value),
+                    QtdCentraltelefonica = Convert.ToInt32(QtdCentralTelefonica.Value),
+                    QtdLinhasFixas = Convert.ToInt32(QtdLinhasFixas.Value),
+                    QtdLinhasMoveis = Convert.ToInt32(QtdLinhasMoveis.Value),
+                    QtdLinkDedicado = Convert.ToInt32(QtdLinkDedicado.Value),
                     Telefone1 = TxtTelefone1.Text,
                     Telefone2 = TxtTelefone2.Text
                 };
@@ -57,9 +57,8 @@ namespace Movel.Views
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                            DisplayAlert("", "Obrigado por indicar um cliente. Entraremos em contato em breve", "OK");
-                            Util.Navigation.AddToNavigation(Session.Navigation.Navigation, new Menu());
-                            Session.Navigation.Navigation.RemovePage(this);
+                            DisplayAlert("Sucesso", "Obrigado por indicar um cliente. Entraremos em contato em breve", "OK");
+                            Session.Navigation.Navigation.PopToRootAsync();
                         });
                         
                     }

@@ -3,90 +3,75 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Movel.Views.Menu"
              xmlns:views="clr-namespace:Movel.Views"
+             xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              BackgroundImage="fundo.png">
-    
-        <!--<Grid  HorizontalOptions="FillAndExpand" HeightRequest="65">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="65"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+    <StackLayout>
+        <views:NavbarMenu />
+        <xForms:SfListView x:Name="listView" ItemTapped="ListView_OnItemTapped" ColumnSpacing="10" SelectionBackgroundColor="#E1EEF8" Margin="0,20,0,0" >
 
-            <StackLayout BackgroundColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0">
-                <Label TextColor="White" Text="Menu"></Label>
-            </StackLayout>
-        </Grid>-->
-        <ScrollView x:Name="Scroll">
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <views:NavbarMenu />
-            <!--<StackLayout x:Name="StackMenu" HeightRequest="40" BackgroundColor="Aqua">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="GrdMenu" BackgroundColor="#1F4AD4">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
+            <xForms:SfListView.LayoutManager>
+                <xForms:GridLayout SpanCount="2"   />
 
-                        <ColumnDefinition Width="11*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    
-                    <Image Margin="5,2,2,3" Source="menu.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="Fill"></Image>
-                </Grid>
-            </StackLayout>-->
-            <Grid Margin="15,20,15,0" HorizontalOptions="FillAndExpand" x:Name="GridMain" ColumnSpacing="20" RowSpacing="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="160"></RowDefinition>
-                    <RowDefinition Height="160"></RowDefinition>
-                    <RowDefinition Height="160"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Row="0" Grid.Column="0" BackgroundColor="#7C1F4AD4" x:Name="GridIndicacoes">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="10*"></RowDefinition>
-                        <RowDefinition Height="35"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Image Source="people.png" Image.Aspect="AspectFit" Grid.Row="1"  VerticalOptions="Fill" HorizontalOptions="Fill" />
-                    <Label Grid.Row="2" Grid.RowSpan="2" XAlign="Center" Text="Minhas Indicações" HorizontalOptions="Center" VerticalOptions="StartAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="White"/>
-                </Grid>
-                <Grid Grid.Row="0" Grid.Column="1" BackgroundColor="#7C1F4AD4" x:Name="GridIndicar">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="10*"></RowDefinition>
-                        <RowDefinition Height="35"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Image Source="adduser.png" Image.Aspect="AspectFit" Grid.Row="1"  VerticalOptions="Fill" HorizontalOptions="Fill" />
-                    <Label Grid.Row="2" Grid.RowSpan="2" XAlign="Center" Text="Indicar Empresa" HorizontalOptions="Center" VerticalOptions="StartAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="White"/>
-                </Grid>
-                <Grid Grid.Row="1" Grid.Column="0" BackgroundColor="#7C1F4AD4" x:Name="GridComo">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="8*"></RowDefinition>
-                        <RowDefinition Height="35"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Image Source="questionbig.png" Image.Aspect="AspectFit" Grid.Row="1"  VerticalOptions="Fill" HorizontalOptions="Fill" />
-                    <Label Grid.Row="2" Grid.RowSpan="2" XAlign="Center" Text="Como Funciona" HorizontalOptions="Center" VerticalOptions="StartAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="White"/>
-                </Grid>
-            </Grid>
-            
-            <!--<StackLayout x:Name="Stck" HorizontalOptions="FillAndExpand"  Spacing="30" Margin="20,10,15,0">
+            </xForms:SfListView.LayoutManager>
+            <xForms:SfListView.ItemSize>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="150" Tablet="150" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="150" Tablet="170" />
+                    </OnPlatform.iOS>
+                </OnPlatform>
+            </xForms:SfListView.ItemSize>
 
-                <Button FontSize="Medium" HeightRequest="65" ContentLayout="Top,0" Image="add.png" Text="Indicar Empresa" x:Name="BtnAdicionar" Clicked="Button_OnClicked"  HorizontalOptions="FillAndExpand" BackgroundColor="#431FD4" TextColor="White" Opacity=".7"></Button>
-            <Button FontSize="Medium" HeightRequest="65" Image="list.png" Text="Minhas Indicações" x:Name="BtnListar" Clicked="ListaClicked" HorizontalOptions="FillAndExpand" BackgroundColor="#431FD4" TextColor="White" Opacity=".7"></Button>
-            <Button FontSize="Medium" HeightRequest="65" Image="question.png" Text="Como Funciona" Clicked="BtnComo_OnClicked" x:Name="BtnComo" HorizontalOptions="FillAndExpand" BackgroundColor="#431FD4" TextColor="White" Opacity=".7"></Button>
-            <Button FontSize="Medium" HeightRequest="65" Image="exit.png" Text="Sair" x:Name="BtnSair" Clicked="BtnSair_OnClicked" HorizontalOptions="FillAndExpand" BackgroundColor="#431FD4" TextColor="White" Opacity=".7"></Button>
-        </StackLayout>-->
-        </StackLayout>
-    </ScrollView>
-    
+            <xForms:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowSpacing="0" ColumnSpacing="0" Margin="4,4,4,4">
+                        <Image Source="{Binding Image}"
+                           Aspect="Fill"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand" />
+                        <Grid ColumnSpacing="0" RowSpacing="0" Opacity="1" HorizontalOptions="End" Padding="5" VerticalOptions="Start">
+
+                        </Grid>
+                        <Grid VerticalOptions="End" ColumnSpacing="0" BackgroundColor="#6D1e88e5">
+                            <Grid.HeightRequest>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <OnPlatform.WinPhone>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="30" Tablet="40" />
+                                    </OnPlatform.WinPhone>
+                                    <OnPlatform.Android>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="30" Tablet="40" />
+                                    </OnPlatform.Android>
+                                    <OnPlatform.iOS>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="30" Tablet="40" />
+                                    </OnPlatform.iOS>
+                                </OnPlatform>
+                            </Grid.HeightRequest>
+                            <Label Text="{Binding Title}" TextColor="White"
+                     VerticalTextAlignment="Center"
+                     Margin="20,0,0,0"
+                     HorizontalTextAlignment="Start">
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.WinPhone>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="14" Tablet="18" />
+                                        </OnPlatform.WinPhone>
+                                        <OnPlatform.Android>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="14" Tablet="15" />
+                                        </OnPlatform.Android>
+                                        <OnPlatform.iOS>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="14" Tablet="15" />
+                                        </OnPlatform.iOS>
+                                    </OnPlatform>
+                                </Label.FontSize>
+                            </Label>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </xForms:SfListView.ItemTemplate>
+        </xForms:SfListView>
+    </StackLayout>
     
    
     

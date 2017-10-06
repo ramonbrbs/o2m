@@ -4,13 +4,13 @@
              
              x:Class="Movel.Views.NavbarMenu">
 
-    <Grid BackgroundColor="#2196f3" HeightRequest="40"
+    <Grid BackgroundColor="#2196f3" HeightRequest="45"
 			
 			Padding="0">
 
             
             <Image Margin="20,0" HorizontalOptions="Start" x:Name="BtnNav"
-				VerticalOptions="Center" Source="menu.png"  WidthRequest="35" HeightRequest="35"></Image>
+				VerticalOptions="Center" Source="menu.png"  WidthRequest="22" HeightRequest="22"></Image>
 
             <Image HorizontalOptions="Center" VerticalOptions="Center" Source="nav.png" />
             <!--<Label 

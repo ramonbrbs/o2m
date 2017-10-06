@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xForms="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms"
              x:Class="Movel.Views.NovoLead"
              Title="Nova Indicação"
              BackgroundImage="fundo.png">
@@ -14,37 +15,33 @@
                 <Entry Placeholder="Telefone de Contato" HorizontalOptions="FillAndExpand" Keyboard="Telephone" x:Name="TxtTelefone1"></Entry>
                 <Entry Placeholder="Telefone de Contato (2)" HorizontalOptions="FillAndExpand" Keyboard="Telephone" x:Name="TxtTelefone2"></Entry>
                 <Entry Placeholder="Email" HorizontalOptions="FillAndExpand" Keyboard="Email" x:Name="TxtEmail"></Entry>
-                <Frame OutlineColor="Black" HeightRequest="1"></Frame>
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Color="#424242"></BoxView>
                 <Label HorizontalOptions="CenterAndExpand" FontSize="30" Text="Dados do Pedido"></Label>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                    <Label Text="Operadora:"></Label>
-                    <Picker x:Name="PckOperadoras" HorizontalOptions="FillAndExpand"></Picker>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="9">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="Qtd. de Linhas Móveis:"></Label>
-                        <Entry x:Name="QtdLinhasMoveis" Keyboard="Numeric" HorizontalOptions="FillAndExpand"></Entry>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="Qtd. de Linhas Fixas:"></Label>
-                        <Entry x:Name="QtdLinhasFixas" Keyboard="Numeric" HorizontalOptions="FillAndExpand"></Entry>
-                    </StackLayout>
+                    <Label Text="Operadora:" VerticalOptions="CenterAndExpand"></Label>
+                    <Picker x:Name="PckOperadoras" HorizontalOptions="FillAndExpand" Title="Operadora" VerticalOptions="CenterAndExpand"></Picker>
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="9">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="Qtd. de Banda Larga:"></Label>
-                        <Entry x:Name="QtdBandaLarga" Keyboard="Numeric" HorizontalOptions="FillAndExpand"></Entry>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="Qtd. de Centrais Telefonicas:"></Label>
-                        <Entry x:Name="QtdCentralTelefonica" Keyboard="Numeric" HorizontalOptions="FillAndExpand"></Entry>
-                    </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Qtd. Linhas Móveis:" VerticalOptions="CenterAndExpand"></Label>
+                    <xForms:SfNumericUpDown x:Name="QtdLinhasMoveis" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                 </StackLayout>
-                    
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Qtd. Linhas Fixas:" VerticalOptions="CenterAndExpand" ></Label>
+                    <xForms:SfNumericUpDown x:Name="QtdLinhasFixas" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Qtd. de Banda Larga:" VerticalOptions="CenterAndExpand"></Label>
+                    <xForms:SfNumericUpDown x:Name="QtdBandaLarga" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Qtd. Centrais Telefonicas:" VerticalOptions="CenterAndExpand"></Label>
+                    <xForms:SfNumericUpDown x:Name="QtdCentralTelefonica" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Qtd. de Links Dedicados:"></Label>
-                    <Entry x:Name="QtdLinkDedicado" Keyboard="Numeric" HorizontalOptions="FillAndExpand"></Entry>
+                    <Label Text="Qtd.  Links Dedicados:" VerticalOptions="CenterAndExpand"></Label>
+                    <xForms:SfNumericUpDown x:Name="QtdLinkDedicado" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                 </StackLayout>
 
                 <Button Text="Cadastrar" x:Name="BtnCadastrar" Clicked="BtnCadastrar_OnClicked" BackgroundColor="#431FD4" Opacity=".7" TextColor="White"></Button>
